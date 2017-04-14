@@ -1,0 +1,19 @@
+{
+  "name": "node-templetizor",
+  "version": "0.0.1",
+  "description": "Script to make handlebar Templates out of static sites",
+  "main": "templetizor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonnyJason/node-templetizor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JhonnyJason/node-templetizor/issues"
+  },
+  "homepage": "https://github.com/JhonnyJason/node-templetizor#readme"
+}
