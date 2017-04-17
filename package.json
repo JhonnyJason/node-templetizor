@@ -4,7 +4,8 @@
   "description": "Script to make handlebar Templates out of static sites",
   "main": "templetizor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node templetizor.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/JhonnyJason/node-templetizor/issues"
   },
-  "homepage": "https://github.com/JhonnyJason/node-templetizor#readme"
+  "homepage": "https://github.com/JhonnyJason/node-templetizor#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  }
 }
