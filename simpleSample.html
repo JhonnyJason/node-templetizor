@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>simple sample</title> <!-- donot grab -->
+    <meta charset="UTF-8">
+    <title>simple sample</title>
+    <!-- donot grab -->
 </head>
+
 <body>
-  <div id="leaveNoText"></div>
-  <div id="parentNoText">
-    <div id="noText"></div>
-    <div id="weirdText">
-      Weird Text<!-- generally to grab that text would be cool but not necessary atm, as I hope that case will not occur -->
-      <div id="otherNoText">gagoul</div><!-- definately grab that text-->
-    </div>
-  </div>
-  <div id="leaveText">Some content is content of conten we are conent with.</div><!-- grab that! -->
-  <div id="node">
-    <div id="otherNode">
-      <div id="anotherNode">
-        <div id="childNode">
-          <div id="nodeWithText">Harakirishirimaqueery</div> <!-- grab it -->
+    <div id="leaveNoText"></div>
+    <div id="parentNoText">
+        <div id="noText"></div>
+        <div id="weirdText">
+            Weird Text
+            <!-- generally to grab that text would be cool but not necessary atm, as I hope that case will not occur -->
+            <div id="otherNoText">gagoul</div>
+            <!-- definately grab that text-->
         </div>
-      </div>
     </div>
-  </div>
-  <div>blablabla</div><!-- maybe notify the user that there is this section without an id-->
-  <div id="crapSection">
-    <div id="crap1">
-      <p id="crapParagraph" class="text-xs-center"> <!-- a delicate link in the middle - would be cool to find a nice way how to represent that but not necessary for the moment -->
-        Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH </br>
-        Konzept & Grafik: <a id="crapLink" href="http://www.va-designory.at/">Visual Art Designory e.U</a>
-        And som text after ... . . .
-      </p>
+    <div id="leaveText">Some content is content of conten we are conent with.</div>
+    <!-- grab that! -->
+    <div id="node">
+        <div id="otherNode">
+            <div id="anotherNode">
+                <div id="childNode">
+                    <div id="nodeWithText">Harakirishirimaqueery</div>
+                    <!-- grab it -->
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="crap2"></div>
-    <div id="crap3"></div>
-    <div id="crap4">Crap4 has some Text</div><!-- also grab that text-->
-  </div>
+    <div>blablabla</div>
+    <!-- maybe notify the user that there is this section without an id-->
+    <div id="crapSection">
+        <div id="crap1">
+            <p id="crapParagraph" class="text-xs-center">
+                <!-- a delicate link in the middle - would be cool to find a nice way how to represent that but not necessary for the moment -->
+                Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH </br>
+                Konzept &amp; Grafik: <a id="crapLink" href="http://www.va-designory.at/">Visual Art Designory e.U</a> And som text after ... . . .
+            </p>
+        </div>
+        <div id="crap2"></div>
+        <div id="crap3"></div>
+        <div id="crap4">Crap4 has some Text</div>
+        <!-- also grab that text-->
+    </div>
 </body>
+
 </html>

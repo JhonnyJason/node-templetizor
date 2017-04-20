@@ -1,48 +1,26 @@
-// i setup a script in package.json so you can start this with npm start instead of templetizor.js
-
-var express = require('express');
 var fs = require('fs');
-var request = require('request');
 var cheerio = require('cheerio');
 
-
-url = 'http://dev-buerstmayr.cominsy.net/';
-
-request(url, function(error, response, html) {
-    if (!error) {
-        var $ = cheerio.load(html);
-
-        var header, text;
+var $ = cheerio.load(fs.readFileSync('simpleSample.html'));
 
 
-        // we should probably make this a json array and push header and text objects to it
-        // so the can refference them as json object in array[1][2][3] etc, 
-        // probably could figure out better structure but i think you get the point
-
-        var json = { header: "", text: "" };
-
-        // this only gets the text from the first header on site
-        $('#header3-3 > div > div > div').filter(function() {
-            var data = $(this);
-            header = data.children().first().text().trim();
-
-            json.header = header;
-
-        })
-
-        // this only gets the text from the first text under header on site
-        $('#content1-4 > div > div > div').filter(function() {
-            var data = $(this);
-            text = data.children().first().text().trim();
-
-            json.text = text;
-
-        })
-    }
-
-    fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err) {
-        console.log('File successfully written! - Check your project directory for the output.json file');
-    })
+var ids = {
+    id: "",
+    text: ""
+}
 
 
-})
+
+$('[id]').each(function() { //Get elements that have an id=
+
+    ids.id = ($(this).attr("id")); //add id to array
+    ids.text = $(this).text().trim(); //add text to array
+    console.log(ids) // this gets all the ids correct, but adds the text on parent ids as well even though they dont have a text, need to fix that
+    var json = JSON.stringify(ids, null, 4);
+
+    // doesnt want to save file correctly, no idea why...
+    fs.writeFile('sample.json', json, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+    });
+});

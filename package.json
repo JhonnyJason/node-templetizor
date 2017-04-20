@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JhonnyJason/node-templetizor#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "circular-json": "^0.3.1",
     "express": "^4.15.2",
     "request": "^2.81.0"
   }
