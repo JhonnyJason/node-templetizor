@@ -1,7 +1,74 @@
-{
-    "id": "crap4",
-    "text": "Crap4 has some Text"
-}y e.U"
-}rstmayr Elektrotechnik GmbH \r\n                Konzept & Grafik: Visual Art Designory e.U And som text after ... . . ."
-}           \r\n        \r\n        \r\n        \r\n        Crap4 has some Text"
-}
+[
+    {
+        "id": "leaveNoText",
+        "text": ""
+    },
+    {
+        "id": "parentNoText",
+        "text": "Weird Text gagoul"
+    },
+    {
+        "id": "noText",
+        "text": ""
+    },
+    {
+        "id": "weirdText",
+        "text": "Weird Text gagoul"
+    },
+    {
+        "id": "otherNoText",
+        "text": "gagoul"
+    },
+    {
+        "id": "leaveText",
+        "text": "Some content is content of conten we are conent with."
+    },
+    {
+        "id": "node",
+        "text": "Harakirishirimaqueery"
+    },
+    {
+        "id": "otherNode",
+        "text": "Harakirishirimaqueery"
+    },
+    {
+        "id": "anotherNode",
+        "text": "Harakirishirimaqueery"
+    },
+    {
+        "id": "childNode",
+        "text": "Harakirishirimaqueery"
+    },
+    {
+        "id": "nodeWithText",
+        "text": "Harakirishirimaqueery"
+    },
+    {
+        "id": "crapSection",
+        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . . Crap4 has some Text"
+    },
+    {
+        "id": "crap1",
+        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . ."
+    },
+    {
+        "id": "crapParagraph",
+        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . ."
+    },
+    {
+        "id": "crapLink",
+        "text": "Visual Art Designory e.U"
+    },
+    {
+        "id": "crap2",
+        "text": ""
+    },
+    {
+        "id": "crap3",
+        "text": ""
+    },
+    {
+        "id": "crap4",
+        "text": "Crap4 has some Text"
+    }
+]
