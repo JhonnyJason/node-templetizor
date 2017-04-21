@@ -7,10 +7,10 @@ var $ = cheerio.load(fs.readFileSync('simpleSample.html'));
 var arr = [];
 
 // the thing we need to deal now with is the duplicating of text cause of nested parent-child divs
-$('[id]').each(function() {
+$('[id]').filter(function() {
     var temp = {
         id: $(this).attr("id"),
-        text: $(this).text().replace(/\s+/g, " ").trim()
+        text: $(this).clone().children().remove().end().text().replace(/\s+/g, " ").trim()
     }
     arr.push(temp);
 

@@ -5,7 +5,7 @@
     },
     {
         "id": "parentNoText",
-        "text": "Weird Text gagoul"
+        "text": ""
     },
     {
         "id": "noText",
@@ -13,7 +13,7 @@
     },
     {
         "id": "weirdText",
-        "text": "Weird Text gagoul"
+        "text": "Weird Text"
     },
     {
         "id": "otherNoText",
@@ -25,19 +25,19 @@
     },
     {
         "id": "node",
-        "text": "Harakirishirimaqueery"
+        "text": ""
     },
     {
         "id": "otherNode",
-        "text": "Harakirishirimaqueery"
+        "text": ""
     },
     {
         "id": "anotherNode",
-        "text": "Harakirishirimaqueery"
+        "text": ""
     },
     {
         "id": "childNode",
-        "text": "Harakirishirimaqueery"
+        "text": ""
     },
     {
         "id": "nodeWithText",
@@ -45,15 +45,15 @@
     },
     {
         "id": "crapSection",
-        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . . Crap4 has some Text"
+        "text": ""
     },
     {
         "id": "crap1",
-        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . ."
+        "text": ""
     },
     {
         "id": "crapParagraph",
-        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: Visual Art Designory e.U And som text after ... . . ."
+        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: And som text after ... . . ."
     },
     {
         "id": "crapLink",
