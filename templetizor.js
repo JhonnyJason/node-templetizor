@@ -1,5 +1,6 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
+var json2html = require('node-json2html');
 
 var $ = cheerio.load(fs.readFileSync('simpleSample.html'));
 
@@ -34,9 +35,20 @@ for (var i = 0; i <= temparray.length - 1; i++) {
 }
 
 var myJsonString = JSON.stringify(array, null, 4);
-console.log(myJsonString)
+// console.log(myJsonString)
 
 fs.writeFile('sample.json', myJsonString, (err) => {
     if (err) throw err;
     console.log('The file has been saved!');
 });
+
+
+
+
+var transform = { '<>': 'div', 'id': '${id}', 'html': '${text}' }
+
+var html = json2html.transform(array, transform);
+
+fs.writeFile('test.html', html, (err) => {
+    if (err) throw err;
+})

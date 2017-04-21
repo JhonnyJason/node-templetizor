@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/JhonnyJason/node-templetizor#readme",
   "dependencies": {
-    "cheerio": "^0.22.0"      
+    "cheerio": "^0.22.0",
+    "node-json2html": "^1.1.1"
   }
 }
