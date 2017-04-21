@@ -1,17 +1,5 @@
 [
     {
-        "id": "leaveNoText",
-        "text": ""
-    },
-    {
-        "id": "parentNoText",
-        "text": ""
-    },
-    {
-        "id": "noText",
-        "text": ""
-    },
-    {
         "id": "weirdText",
         "text": "Weird Text"
     },
@@ -24,32 +12,8 @@
         "text": "Some content is content of conten we are conent with."
     },
     {
-        "id": "node",
-        "text": ""
-    },
-    {
-        "id": "otherNode",
-        "text": ""
-    },
-    {
-        "id": "anotherNode",
-        "text": ""
-    },
-    {
-        "id": "childNode",
-        "text": ""
-    },
-    {
         "id": "nodeWithText",
         "text": "Harakirishirimaqueery"
-    },
-    {
-        "id": "crapSection",
-        "text": ""
-    },
-    {
-        "id": "crap1",
-        "text": ""
     },
     {
         "id": "crapParagraph",
@@ -58,14 +22,6 @@
     {
         "id": "crapLink",
         "text": "Visual Art Designory e.U"
-    },
-    {
-        "id": "crap2",
-        "text": ""
-    },
-    {
-        "id": "crap3",
-        "text": ""
     },
     {
         "id": "crap4",
