@@ -1,30 +1,111 @@
 [
     {
-        "id": "weirdText",
-        "text": "Weird Text"
+        "id": "eura-drives-link",
+        "href": "eura_drives.html",
+        "text": "EURA Drives Produkte"
     },
     {
-        "id": "otherNoText",
-        "text": "gagoul"
+        "id": "antriebs-technik-link",
+        "href": "antriebs_technik_zubehoer.html",
+        "text": "Antriebstechnik Zubehör"
     },
     {
-        "id": "leaveText",
-        "text": "Some content is content of conten we are conent with."
+        "id": "service-link",
+        "href": "services.html",
+        "text": "Serviceleistungen"
     },
     {
-        "id": "nodeWithText",
-        "text": "Harakirishirimaqueery"
+        "id": "contact-link",
+        "href": "#Contact",
+        "text": "Kontakt"
     },
     {
-        "id": "crapParagraph",
-        "text": "Copyright (c) 2017 Bürstmayr Elektrotechnik GmbH Konzept & Grafik: And som text after ... . . ."
+        "id": "eura-drives-mobile-link",
+        "href": "eura_drives.html",
+        "text": "EURA Drives Produkte"
     },
     {
-        "id": "crapLink",
-        "text": "Visual Art Designory e.U"
+        "id": "antriebstechnik-mobile-link",
+        "href": "antriebs_technik_zubehoer.html",
+        "text": "Antriebstechnik Zubehör"
     },
     {
-        "id": "crap4",
-        "text": "Crap4 has some Text"
+        "id": "service-mobile-link",
+        "href": "services.html",
+        "text": "Serviceleistungen"
+    },
+    {
+        "id": "contacts-mobile-link",
+        "href": "#Contact",
+        "text": "Kontakt"
+    },
+    {
+        "id": "welcome-header",
+        "text": "Willkommen bei Bürstmayr Elektrotechnik"
+    },
+    {
+        "id": "welcome-text-paragraph",
+        "text": "Ausführliche Beratung & Planung sind wichtiger Grundstein für Erfolg! Wir liefern Ihnen zusätzlich modernes Handwerk und fachkundige Installation, dass durch seine Qualität und Nachhaltigkeit überzeugt."
+    },
+    {
+        "id": "eura-drives-card-link",
+        "href": "eura_drives.html",
+        "text": "EURO Drives Produkte"
+    },
+    {
+        "id": "eura-drives-card-block-text",
+        "text": "Als Partner und österreichischer Generalvertreter der Firma unterstützen wir Sie bei Planung & Ausführung Ihres Projektes zu den Themen Frequenzumformer und Antriebstechnik."
+    },
+    {
+        "id": "eura-drives-card-box-text-link",
+        "href": "http://euradrives.eu/de/",
+        "text": "EURA Drives Europe GmbH"
+    },
+    {
+        "id": "eura-drives-card-box-button",
+        "href": "eura_drives.html",
+        "text": "Zu den Produkten"
+    },
+    {
+        "id": "services-card-box-title-link",
+        "href": "services.html",
+        "text": "Serviceleistungen"
+    },
+    {
+        "id": "services-card-box-paragraph",
+        "text": "Bürstmayr Elektrotechnik GmbH steht Ihnen als verlässlicher Partner rund um die breitgefächerte Elektrotechnik zur Seite. Von kleineren Elektroinstallationen zu beliebigen groß angelegten Anlagen-netzwerken."
+    },
+    {
+        "id": "services-card-box-button",
+        "href": "services.html",
+        "text": "Zu den Leistungen"
+    },
+    {
+        "id": "buerstmayr-history-header",
+        "text": "Unser Werdegang"
+    },
+    {
+        "id": "buerstmayr-history-paragraph-1",
+        "text": "Nach abgeschlossener Meisterprüfung gründet Klaus Bürstmayr im Jahr 2011 sein Einzelunternehmen Bürstmayr Elektrotechnik in der niederösterreichischen Gemeinde Behamberg. 2014 wird das Unternehmen zur GmbH umgegründet."
+    },
+    {
+        "id": "buerstmayr-history-paragraph-2",
+        "text": "Der Betrieb spezialisiert sich auf die Themengebiete der intelligenten Gebäudetechnik wie auch zum Thema Antriebstechnik, aber er bietet ebenso traditionelles Handwerk bei höchster Qualität."
+    },
+    {
+        "id": "buerstmayr-history-paragraph-3",
+        "text": "Mit Jänner 2016 erlangt der Betrieb die Generalvertretung der Firma EURA Drives Europe GmbH und vertritt seither deren Produkte zu den Themen Antriebstechnik und Frequenzumrichter in ganz Österreich."
+    },
+    {
+        "id": "buerstmayr-history-paragraph-4",
+        "text": "Persönliche Betreuung und verlässlicher Service garantieren Kundenzufriedenheit. Ermöglicht wird dies nicht zuletzt auch durch die gute Zusammenarbeit mit den angeführten Partnerbetrieben."
+    },
+    {
+        "id": "motivation-header",
+        "text": "Kontaktieren Sie uns, oder schauen sie doch gleich vorbei!"
+    },
+    {
+        "id": "motivation-subtext",
+        "text": "Und überzeugen Sie sich von unseren Leistungen"
     }
 ]
