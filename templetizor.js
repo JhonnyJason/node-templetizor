@@ -54,4 +54,4 @@ var html = json2html.transform(array, transform);
 
 fs.writeFile('test.html', html, (err) => {
     if (err) throw err;
-})
+});
