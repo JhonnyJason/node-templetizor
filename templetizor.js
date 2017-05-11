@@ -1,57 +1,149 @@
-var fs = require('fs');
-var cheerio = require('cheerio');
-var json2html = require('node-json2html');
-
-var $ = cheerio.load(fs.readFileSync('sampleIndex.html'));
-
-
-var temparray = [];
-var array = [];
+//All the requirements
+var Modules = {
+  fs: require('fs'),
+  cheerio: require('cheerio')
+};
 
 
-$('[id]').filter(function() {
-    var temp = {
-        id: $(this).attr("id"),
-        href: $(this).attr("href"),
-        text: $(this).clone().children().remove().end().text().replace(/\s+/g, " ").trim()
+//---------------------------------------------------------------------------------------------------------------------
+// global variables
+//---------------------------------------------------------------------------------------------------------------------
+var $ = null;
+var idBase = "fakeID";
+var idCount = 0;
+var content = {};
+
+//---------------------------------------------------------------------------------------------------------------------
+// The main Program
+//---------------------------------------------------------------------------------------------------------------------
+function main() {
+  var filenames = Modules.fs.readdirSync(__dirname + "/htmlFiles");
+  for(var i = 0; i < filenames.length; i++) {
+    var filename = filenames[i].split(".")[0];
+    templatize(filename);
+  }
+}
+main();
+
+
+//---------------------------------------------------------------------------------------------------------------------
+// the functions
+//---------------------------------------------------------------------------------------------------------------------
+function templatize(filename) {
+
+  $ = Modules.cheerio.load(Modules.fs.readFileSync(__dirname + "/htmlFiles/" + filename + ".html"));
+
+  var head = $('head');
+  var body = $('body');
+
+  // /get all the elements
+  getElementsWithContent(body);
+
+  //add some essential stuff for including administrative elements, styles and scripts
+  head.append("{{{headInclude}}}\n");
+  body.append("{{{adminPanel}}}\n");
+  body.append("{{{scriptInclude}}}\n");
+
+  //save html
+  //console.log($.html());
+  Modules.fs.writeFile(
+    __dirname + "/outputFiles/templates/" + filename + '.mustache',
+    $.html(),
+    function (err) {
+      if (err) throw err;
+      console.log("wrote " + filename + ".mustache successfully");
     }
-    temparray.push(temp);
+  );
 
-});
-
-// did this so I can remove the id's that have no text
-// we could probably figure out a better way to do this since im using 2 arrays this way but fokit
-for (var i = 0; i <= temparray.length - 1; i++) {
-    if (temparray[i].text) {
-        var ids = temparray[i].id;
-        var href = temparray[i].href
-        var texts = temparray[i].text;
-
-        var temp = {
-            id: ids,
-            href:href,
-            text: texts
-        }
-
-        array.push(temp);
+  //save json
+  //console.log(JSON.stringify(content));
+  Modules.fs.writeFile(
+    __dirname + "/outputFiles/content/" + filename + '.json',
+    JSON.stringify(content),
+    function (err) {
+      if (err) throw err;
+      console.log("wrote " + filename + ".json successfully");
     }
+  );
+
 }
 
-var myJsonString = JSON.stringify(array, null, 4);
-// console.log(myJsonString)
+function checkNode(node) {
+  //console.log(node.html());
 
-fs.writeFile('sample.json', myJsonString, (err) => {
-    if (err) throw err;
-    console.log('The file has been saved!');
-});
+  if(hasNoText(node)) {
+    return;
+  }
+  if(!node.html()) { //we neither have content nor children
+    return; //so we leave the empty leave
+  }
+
+  var id = node.attr("id");
 
 
+  //pfusch for excluding the menu
+  if(id == "menu")
+    return;
+  //pfusch for excluding nasty Labels
+  if(node.is("label"))
+    return;
 
 
-var transform = { '<>': 'div', 'id': '${id}', 'html': '${text}' }
+  //check next
+  var children = node.children();
 
-var html = json2html.transform(array, transform);
+  var nonNodeElements = 0;
 
-fs.writeFile('test.html', html, (err) => {
-    if (err) throw err;
-});
+  for (var i = 0; i < children.length; i++) {
+    if($(children[i]).is("a") || $(children[i]).is("br")
+        || $(children[i]).is("strong") || $(children[i]).is("img")
+        || $(children[i]).is("span")) {
+      //console.log("!! -  We have a nonNode element here  -  !! ");
+      nonNodeElements++;
+    } else {
+      checkNode($(children[i]));
+    }
+  }
+
+  if(!children.length || (children.length == nonNodeElements)) { //we have here a leave
+    //console.log("!!!   ---   This Node either had no children at all or it only had links as children!");
+
+    if(!id) {
+      id = idBase + idCount++;
+      node.attr("id", id);
+    }
+
+    node.addClass("editable-field");
+    content[id] = node.html();
+    node.html("{{{content." + id + "}}}");
+  }
+}
+
+function getElementsWithContent(body) {
+  var children = body.children();
+
+  console.log("we have " + children.length + " children!");
+
+  for (var i = 0; i < children.length; i++) {
+    checkNode($(children[i]));
+  }
+
+}
+
+
+function hasNoText(node) {
+    var text = node.text();
+    console.log("_____________START")
+    console.log(text);
+    if(text) {
+      console.log("_____________REPLACED")
+      text = text.replace(/\s/g, "");
+      console.log(text);
+      if(text){
+        console.log(" - - - had Text");
+        return false;
+      }
+    }
+    console.log(" - - - no Text");
+    return true;
+}
