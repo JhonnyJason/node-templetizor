@@ -8,6 +8,11 @@ var Modules = {
 //---------------------------------------------------------------------------------------------------------------------
 // global variables
 //---------------------------------------------------------------------------------------------------------------------
+var ignoredSubTags = ["span", "a", "b", "sup", "img", "strong", "br"];
+
+//---------------------------------------------------------------------------------------------------------------------
+// global variables
+//---------------------------------------------------------------------------------------------------------------------
 var $ = null;
 var idBase = "fakeID";
 var idCount = 0;
@@ -95,9 +100,7 @@ function checkNode(node) {
   var nonNodeElements = 0;
 
   for (var i = 0; i < children.length; i++) {
-    if($(children[i]).is("a") || $(children[i]).is("br")
-        || $(children[i]).is("strong") || $(children[i]).is("img")
-        || $(children[i]).is("span")) {
+    if(isSubTagToIgnore(children[i])) {
       //console.log("!! -  We have a nonNode element here  -  !! ");
       nonNodeElements++;
     } else {
@@ -130,6 +133,16 @@ function getElementsWithContent(body) {
 
 }
 
+function isSubTagToIgnore(node) {
+
+  for( var i = 0; i < ignoredSubTags.length;  i++) {
+    if($(node).is(ignoredSubTags[i])) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 function hasNoText(node) {
     var text = node.text();
