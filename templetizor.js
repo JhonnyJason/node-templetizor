@@ -8,7 +8,7 @@ var Modules = {
 //---------------------------------------------------------------------------------------------------------------------
 // global variables
 //---------------------------------------------------------------------------------------------------------------------
-var ignoredSubTags = ["span", "a", "b", "sup", "img", "strong", "br", "script"];
+var ignoredSubTags = ["span", "a", "b", "sup", "img", "strong", "br"];
 
 //---------------------------------------------------------------------------------------------------------------------
 // global variables
@@ -23,7 +23,7 @@ var content = {};
 //---------------------------------------------------------------------------------------------------------------------
 function main() {
   var filenames = Modules.fs.readdirSync(__dirname + "/htmlFiles");
-  for(var i = 0; i < filenames.length; i++) {
+  for (var i = 0; i < filenames.length; i++) {
     var filename = filenames[i].split(".")[0];
     templatize(filename);
   }
@@ -34,12 +34,18 @@ main();
 //---------------------------------------------------------------------------------------------------------------------
 // the functions
 //---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------
+// templatize
+//-----------------------------------------------------------------------------------------------------------------------
 function templatize(filename) {
 
   $ = Modules.cheerio.load(Modules.fs.readFileSync(__dirname + "/htmlFiles/" + filename + ".html"));
 
   var head = $('head');
   var body = $('body');
+
+
+  establishLeastFeasableBase();
 
   // /get all the elements
   getElementsWithContent(body);
@@ -54,7 +60,7 @@ function templatize(filename) {
   Modules.fs.writeFile(
     __dirname + "/outputFiles/templates/" + filename + '.mustache',
     $.html(),
-    function (err) {
+    function(err) {
       if (err) throw err;
       console.log("wrote " + filename + ".mustache successfully");
     }
@@ -65,7 +71,7 @@ function templatize(filename) {
   Modules.fs.writeFile(
     __dirname + "/outputFiles/content/" + filename + '.json',
     JSON.stringify(content),
-    function (err) {
+    function(err) {
       if (err) throw err;
       console.log("wrote " + filename + ".json successfully");
     }
@@ -73,13 +79,16 @@ function templatize(filename) {
 
 }
 
+//-----------------------------------------------------------------------------------------------------------------------
+// checkNode
+//-----------------------------------------------------------------------------------------------------------------------
 function checkNode(node) {
   //console.log(node.html());
 
-  if(hasNoText(node)) {
+  if (hasNoText(node)) {
     return;
   }
-  if(!node.html()) { //we neither have content nor children
+  if (!node.html()) { //we neither have content nor children
     return; //so we leave the empty leave
   }
 
@@ -87,10 +96,10 @@ function checkNode(node) {
 
 
   //pfusch for excluding the menu
-  if(id == "menu")
+  if (id == "menu")
     return;
   //pfusch for excluding nasty Labels
-  if(node.is("label"))
+  if (node.is("label"))
     return;
 
 
@@ -100,7 +109,7 @@ function checkNode(node) {
   var nonNodeElements = 0;
 
   for (var i = 0; i < children.length; i++) {
-    if(isSubTagToIgnore(children[i])) {
+    if (isSubTagToIgnore(children[i])) {
       //console.log("!! -  We have a nonNode element here  -  !! ");
       nonNodeElements++;
     } else {
@@ -108,10 +117,10 @@ function checkNode(node) {
     }
   }
 
-  if(!children.length || (children.length == nonNodeElements)) { //we have here a leave
+  if (!children.length || (children.length == nonNodeElements)) { //we have here a leave
     //console.log("!!!   ---   This Node either had no children at all or it only had links as children!");
 
-    if(!id) {
+    if (!id) {
       id = idBase + idCount++;
       node.attr("id", id);
     }
@@ -122,21 +131,29 @@ function checkNode(node) {
   }
 }
 
+//-----------------------------------------------------------------------------------------------------------------------
+// getElementsWithContent
+//-----------------------------------------------------------------------------------------------------------------------
 function getElementsWithContent(body) {
   var children = body.children();
 
   console.log("we have " + children.length + " children!");
 
   for (var i = 0; i < children.length; i++) {
-    checkNode($(children[i]));
+    if (!$(children[i]).is("script")) {
+      checkNode($(children[i]));
+    }
   }
 
 }
 
+//-----------------------------------------------------------------------------------------------------------------------
+// isSubTagToIgnore
+//-----------------------------------------------------------------------------------------------------------------------
 function isSubTagToIgnore(node) {
 
-  for( var i = 0; i < ignoredSubTags.length;  i++) {
-    if($(node).is(ignoredSubTags[i])) {
+  for (var i = 0; i < ignoredSubTags.length; i++) {
+    if ($(node).is(ignoredSubTags[i])) {
       return true;
     }
   }
@@ -144,19 +161,31 @@ function isSubTagToIgnore(node) {
   return false;
 }
 
+//-----------------------------------------------------------------------------------------------------------------------
+// hasNoText
+//-----------------------------------------------------------------------------------------------------------------------
 function hasNoText(node) {
-    var text = node.text();
-    console.log("_____________START")
+  var text = node.text();
+  console.log("_____________START")
+  console.log(text);
+  if (text) {
+    console.log("_____________REPLACED")
+    text = text.replace(/\s/g, "");
     console.log(text);
-    if(text) {
-      console.log("_____________REPLACED")
-      text = text.replace(/\s/g, "");
-      console.log(text);
-      if(text){
-        console.log(" - - - had Text");
-        return false;
-      }
+    if (text) {
+      console.log(" - - - had Text");
+      return false;
     }
-    console.log(" - - - no Text");
-    return true;
+  }
+  console.log(" - - - no Text");
+  return true;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------
+// establishLeastFeasableBase
+//-----------------------------------------------------------------------------------------------------------------------
+function establishLeastFeasableBase() {
+  while ($('#' + idBase + '0').length) {
+    idBase += 'x';
+  }
 }
